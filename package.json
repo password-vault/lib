@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/password-vault/lib/issues"
   },
-  "homepage": "https://github.com/password-vault/lib#readme"
+  "homepage": "https://github.com/password-vault/lib#readme",
+  "publishConfig": {
+    "@password-vault:registry": "https://npm.pkg.github.com"
+  }
 }
