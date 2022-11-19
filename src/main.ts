@@ -4,13 +4,13 @@ import {
   getUser,
   postUser,
   removePassword,
-} from "./axiosService";
+} from "./connect-api";
 
 /**
  * It calls the API function and returns the time it took to execute
  * @returns The time it took to check the connection.
  */
-export function checkConnection() {
+function checkConnection(): number {
   const now = Date.now();
 
   checkConnectionAPI();
@@ -20,7 +20,7 @@ export function checkConnection() {
   return Date.now() - now;
 }
 
-export namespace user {
+namespace user {
   /**
    * It finds a user by email and returns the user's name and email
    * @param {string} email - string
@@ -36,7 +36,7 @@ export namespace user {
   export const post = postUser;
 }
 
-export namespace password {
+namespace password {
   /**
    * It add a new password in the database
    * @param {AddPassword} data - AddPassword - The data that will be sent to the API.
@@ -51,3 +51,5 @@ export namespace password {
    */
   export const remove = removePassword;
 }
+
+module.exports = { checkConnection, user, password };
