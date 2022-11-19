@@ -1,5 +1,5 @@
-import { AddPassword, CreateUser, DeletePassword } from "../global";
-import axios, { AxiosResponse } from "axios";
+import { AddPassword, CreateUser, DeletePassword } from "../@types/global";
+import axios from "axios";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -10,16 +10,16 @@ const checkConnectionAPI = async () => await AxiosAPI.get("/ping");
 
 const getUser = async (
   email: string
-): Promise<AxiosResponse<{ name: string; email: string }>> =>
+): Promise<{ name: string; email: string }> =>
   await AxiosAPI.get("/user", { params: { email } });
 
-const postUser = async (data: CreateUser): Promise<AxiosResponse<void>> =>
+const postUser = async (data: CreateUser): Promise<void> =>
   await AxiosAPI.post("/user", data);
 
-const addPassword = async (data: AddPassword) =>
+const addPassword = async (data: AddPassword): Promise<void> =>
   await AxiosAPI.patch("/password", data);
 
-const removePassword = async (data: DeletePassword) =>
+const removePassword = async (data: DeletePassword): Promise<void> =>
   await AxiosAPI.delete("/password", {
     params: { email: data.email, passwordName: data.passwordsName },
   });
